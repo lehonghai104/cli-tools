@@ -1,0 +1,23 @@
+<Project>
+  <!-- Shared by every project in Tools.slnx (src/<Tool> and tests/<Tool>.Tests). -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- All tool packages land in ./nupkg (used by `make tool-install`). -->
+    <PackageOutputPath>$(MSBuildThisFileDirectory)nupkg</PackageOutputPath>
+  </PropertyGroup>
+
+  <!-- Defaults for tools under src/: a lowercase command name, packable as a .NET tool, AOT-ready.
+       A tool's csproj only needs OutputType=Exe plus whatever it does differently. -->
+  <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('$([System.IO.Path]::DirectorySeparatorChar)src$([System.IO.Path]::DirectorySeparatorChar)'))">
+    <AssemblyName>$(MSBuildProjectName.ToLowerInvariant())</AssemblyName>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>$(AssemblyName)</ToolCommandName>
+    <PackageId>$(MSBuildProjectName).Cli</PackageId>
+    <Version>1.0.0</Version>
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+</Project>

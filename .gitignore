@@ -1,0 +1,51 @@
+# --- .NET build output
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.rsuser
+project.lock.json
+*.nuget.props
+*.nuget.targets
+
+# --- Test results / coverage
+[Tt]est[Rr]esult*/
+*.trx
+coverage*.json
+coverage*.xml
+*.coverage
+
+# --- Packaging & publish output (make pack / make publish)
+nupkg/
+dist/
+publish/
+*.nupkg
+*.snupkg
+
+# --- Native AOT debug symbols
+*.dSYM/
+*.dbg
+*.pdb
+
+# --- IDEs / editors
+.vs/
+.idea/
+*.sln.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*~
+
+# --- OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Secrets: never commit TOTP configs or QR codes containing secrets
+.totp/
+*.secret
+.env
+.env.*
